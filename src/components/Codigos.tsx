@@ -8,10 +8,11 @@ interface IComponenteCodigosProps {
   codigos: QueryDocumentSnapshot<DocumentData>[];
   setVisibleMensajeCopy?: React.Dispatch<React.SetStateAction<boolean>>;
   setMensajeCopy?: React.Dispatch<React.SetStateAction<string>>;
+  home: boolean;
 }
 
 // El componente recibe los países y los renderiza
-export const Codigos = ({ codigos, setVisibleMensajeCopy, setMensajeCopy }: IComponenteCodigosProps) => {
+export const Codigos = ({ codigos, setVisibleMensajeCopy, setMensajeCopy, home }: IComponenteCodigosProps) => {
   const copy = (codigo: string, cabecera: string) => {
     navigator.clipboard.writeText(codigo);
     setMensajeCopy && setMensajeCopy(cabecera + ' copiado');
@@ -32,7 +33,7 @@ export const Codigos = ({ codigos, setVisibleMensajeCopy, setMensajeCopy }: ICom
     <>
       {codigos.length === 0 && (
         <div className="alert alert-warning" role="alert" aria-live="assertive">
-          No hay código guardado en este día
+          {home ? 'No hay código disponible hoy' : 'No hay código guardado en este día'}
         </div>
       )}
       {codigos.length > 0 &&

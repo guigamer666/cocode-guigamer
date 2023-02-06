@@ -41,7 +41,7 @@ export const CodePasterHistoricoPage = () => {
     // Pasamos a los productos que va a pintar la tabla los docs. docs también es algo de Firebase. De la colección que hemos conseguido en la línea anterior, extraemos los docs, es decir, los documentos, en nuestro caso los productos
     setCodigos(codigos.docs);
     setLoading(false);
-    setMensajeNoCodigo(codigos.docs.length===0);
+    setMensajeNoCodigo(codigos.docs.length === 0);
   };
 
   const downloadTextFile = () => {
@@ -108,7 +108,12 @@ export const CodePasterHistoricoPage = () => {
       <div className="row my-4 vertical-scrollable">
         <div className="col">
           {codigos && (
-            <Codigos codigos={codigos} setVisibleMensajeCopy={setVisibleMensajeCopy} setMensajeCopy={setMensajeCopy} />
+            <Codigos
+              codigos={codigos}
+              setVisibleMensajeCopy={setVisibleMensajeCopy}
+              setMensajeCopy={setMensajeCopy}
+              home={false}
+            />
           )}
         </div>
       </div>

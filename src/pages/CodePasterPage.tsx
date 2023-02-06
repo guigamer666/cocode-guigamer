@@ -118,7 +118,12 @@ export const CodePasterPage = () => {
       <div className="row my-4 vertical-scrollable">
         <div className="col">
           {codigos && (
-            <Codigos codigos={codigos} setVisibleMensajeCopy={setVisibleMensajeCopy} setMensajeCopy={setMensajeCopy} />
+            <Codigos
+              codigos={codigos}
+              setVisibleMensajeCopy={setVisibleMensajeCopy}
+              setMensajeCopy={setMensajeCopy}
+              home={true}
+            />
           )}
         </div>
       </div>
