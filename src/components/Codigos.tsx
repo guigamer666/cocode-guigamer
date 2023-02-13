@@ -56,9 +56,11 @@ export const Codigos = ({ codigos, setVisibleMensajeCopy, setMensajeCopy, home }
                 <button className="btn btn-success" onClick={() => copy(x.data().codigo, x.data().cabecera)}>
                   Copiar <span className="visually-hidden">&nbsp;{x.data().cabecera}</span>
                 </button>
-                <button className="btn btn-danger" onClick={() => deleteCodigo(x)}>
-                  Eliminar <span className="visually-hidden">&nbsp;{x.data().cabecera}</span>
-                </button>
+                {home && (
+                  <button className="btn btn-danger" onClick={() => deleteCodigo(x)}>
+                    Eliminar <span className="visually-hidden">&nbsp;{x.data().cabecera}</span>
+                  </button>
+                )}
               </div>
             </div>
           );
