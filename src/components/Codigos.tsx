@@ -32,7 +32,7 @@ export const Codigos = ({ codigos, setVisibleMensajeCopy, setMensajeCopy, home }
   return (
     <>
       {codigos.length === 0 && (
-        <div className="alert alert-warning" role="alert" aria-live="assertive">
+        <div className="alert alert-warning" role="status" aria-live="polite">
           {home ? 'No hay código disponible hoy' : 'No hay código guardado en este día'}
         </div>
       )}

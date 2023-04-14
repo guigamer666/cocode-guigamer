@@ -110,7 +110,7 @@ export const CodePasterPage = () => {
       </div>
       {visibleMensajeCopy && (
         <div className="row mt-4">
-          <div className="alert alert-warning" role="alert" aria-live="assertive">
+          <div className=" alert-warning" role="status" aria-live="polite">
             {mensajeCopy}
           </div>
         </div>
