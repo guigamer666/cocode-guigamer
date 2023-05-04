@@ -100,7 +100,7 @@ export const CodePasterHistoricoPage = () => {
       )}
       {visibleMensajeCopy && (
         <div className="row mt-4">
-          <div className="alert alert-warning" role="status" aria-live="polite">
+          <div className="alert alert-warning" role="region" aria-live="assertive">
             {mensajeCopy}
           </div>
         </div>

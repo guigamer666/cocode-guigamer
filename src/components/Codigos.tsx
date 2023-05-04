@@ -8,23 +8,32 @@ interface IComponenteCodigosProps {
   codigos: QueryDocumentSnapshot<DocumentData>[];
   setVisibleMensajeCopy?: React.Dispatch<React.SetStateAction<boolean>>;
   setMensajeCopy?: React.Dispatch<React.SetStateAction<string>>;
+  setFocus?: React.Dispatch<boolean>;
   home: boolean;
 }
 
 // El componente recibe los países y los renderiza
-export const Codigos = ({ codigos, setVisibleMensajeCopy, setMensajeCopy, home }: IComponenteCodigosProps) => {
+export const Codigos = ({
+  codigos,
+  setVisibleMensajeCopy,
+  setMensajeCopy,
+  setFocus,
+  home
+}: IComponenteCodigosProps) => {
   const copy = (codigo: string, cabecera: string) => {
     navigator.clipboard.writeText(codigo);
     setMensajeCopy && setMensajeCopy(cabecera + ' copiado');
     setVisibleMensajeCopy && setVisibleMensajeCopy(true);
     setTimeout(() => {
-      setVisibleMensajeCopy && setVisibleMensajeCopy(false);
-    }, 2000);
+      // setVisibleMensajeCopy && setVisibleMensajeCopy(false);
+      setMensajeCopy && setMensajeCopy('');
+    }, 200);
   };
 
   const deleteCodigo = async (codigo: DocumentData) => {
     if (window.confirm(`¿Estás seguro de eliminar ${codigo.data().cabecera}?`)) {
       const codigoEliminar = doc(db, `codigo/${codigo.id}`);
+      setFocus && setFocus(true);
       await deleteDoc(codigoEliminar);
     }
   };
@@ -32,7 +41,7 @@ export const Codigos = ({ codigos, setVisibleMensajeCopy, setMensajeCopy, home }
   return (
     <>
       {codigos.length === 0 && (
-        <div className="alert alert-warning" role="status" aria-live="polite">
+        <div className="alert alert-warning" role="region" aria-live="assertive">
           {home ? 'No hay código disponible hoy' : 'No hay código guardado en este día'}
         </div>
       )}
